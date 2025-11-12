@@ -24,31 +24,85 @@
     .project{background:#1e293b;margin:1rem 0;padding:1rem;border-radius:8px;}
     footer{text-align:center;padding:1rem;background:#1e293b;color:#94a3b8;}
 
-    /* ----------- Chatbot ----------- */
-    #chatbot{
-      position:fixed;
-      bottom:20px;
-      right:20px;
-      width:300px;
-      background:#1e293b;
-      padding:10px;
-      border-radius:10px;
-      box-shadow:0 4px 20px rgba(0,0,0,0.6);
-      z-index:999;
+    /* ----------- Modern Chatbot ----------- */
+    #chatbot {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 320px;
+      max-height: 400px;
+      background: #1e293b;
+      border-radius: 12px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      z-index: 999;
+      font-size: 0.95rem;
     }
-    #chat-window{
-      height:200px;
-      overflow-y:auto;
-      background:#0f172a;
-      padding:8px;
-      border-radius:6px;
-      margin-bottom:8px;
-      color:#fff;
+    #chat-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px;
+      background: linear-gradient(90deg,#38bdf8,#0ea5e9);
+      color: #0f172a;
+      font-weight: 700;
     }
-    #chat-window p{margin:.3rem 0;}
-    #user-input{width:70%;padding:5px;border-radius:4px;border:none;}
-    #send-btn{width:28%;padding:5px;border:none;border-radius:4px;background:#38bdf8;color:#0f172a;cursor:pointer;}
-    #send-btn:hover{background:#facc15;}
+    #chat-header img {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+    }
+    #chat-window {
+      flex: 1;
+      padding: 10px;
+      overflow-y: auto;
+      background: #0f172a;
+    }
+    .chat-msg {
+      margin-bottom: 8px;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .chat-msg.user p {
+      background: #38bdf8;
+      color: #0f172a;
+      padding: 6px 10px;
+      border-radius: 12px;
+      max-width: 70%;
+    }
+    .chat-msg.ova p {
+      background: #1e293b;
+      border: 1px solid #38bdf8;
+      color: #f1f5f9;
+      padding: 6px 10px;
+      border-radius: 12px;
+      max-width: 70%;
+    }
+    #chat-input {
+      display: flex;
+      gap: 6px;
+      padding: 8px;
+      background: #1e293b;
+    }
+    #user-input {
+      flex: 1;
+      padding: 6px 10px;
+      border-radius: 8px;
+      border: none;
+    }
+    #send-btn {
+      padding: 6px 12px;
+      border: none;
+      border-radius: 8px;
+      background: #38bdf8;
+      color: #0f172a;
+      cursor: pointer;
+      font-weight: 700;
+    }
+    #send-btn:hover { background: #facc15; }
   </style>
 </head>
 <body>
@@ -117,11 +171,17 @@
     © Mohd Owais — Built with Python logic • Hosted on GitHub Pages
   </footer>
 
-  <!-- Chatbot -->
+  <!-- Modern Chatbot -->
   <div id="chatbot">
+    <div id="chat-header">
+      <img src="https://i.ibb.co/ZYW3VTp/avatar.png" alt="OVA Avatar">
+      <span>OVA Assistant</span>
+    </div>
     <div id="chat-window"></div>
-    <input type="text" id="user-input" placeholder="Ask OVA..." />
-    <button id="send-btn">Send</button>
+    <div id="chat-input">
+      <input type="text" id="user-input" placeholder="Ask OVA..." />
+      <button id="send-btn">Send</button>
+    </div>
   </div>
 
   <script>
@@ -160,8 +220,8 @@
       const input = userInput.value.toLowerCase().trim();
       if(!input) return;
       const reply = responses[input] || responses["default"];
-      chatWindow.innerHTML += `<p><strong>You:</strong> ${input}</p>`;
-      chatWindow.innerHTML += `<p><strong>OVA:</strong> ${reply}</p>`;
+      chatWindow.innerHTML += `<div class="chat-msg user"><p>${input}</p></div>`;
+      chatWindow.innerHTML += `<div class="chat-msg ova"><p>${reply}</p></div>`;
       userInput.value="";
       chatWindow.scrollTop=chatWindow.scrollHeight;
     };
