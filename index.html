@@ -14,7 +14,7 @@
     header h1{font-size:2.2rem;color:#38bdf8;}
     header p{color:#94a3b8;}
     #clock{margin:1rem 0;font-size:1.3rem;color:#facc15;}
-    .typing{font-size:1.5rem;margin:1rem 0;}
+    .typing{font-size:1.2rem;margin:1rem 0;}
     .btn{display:inline-block;margin-top:1rem;padding:.7rem 1.5rem;background:#38bdf8;color:#0f172a;border-radius:8px;}
     .btn:hover{background:#facc15;}
     nav{text-align:center;background:#1e293b;padding:.8rem;}
@@ -25,8 +25,26 @@
     footer{text-align:center;padding:1rem;background:#1e293b;color:#94a3b8;}
 
     /* ----------- Chatbot ----------- */
-    #chatbot{position:fixed;bottom:20px;right:20px;width:300px;background:#1e293b;padding:10px;border-radius:10px;box-shadow:0 4px 20px rgba(0,0,0,0.6);z-index:999;}
-    #chat-window{height:200px;overflow-y:auto;background:#0f172a;padding:8px;border-radius:6px;margin-bottom:8px;}
+    #chatbot{
+      position:fixed;
+      bottom:20px;
+      right:20px;
+      width:300px;
+      background:#1e293b;
+      padding:10px;
+      border-radius:10px;
+      box-shadow:0 4px 20px rgba(0,0,0,0.6);
+      z-index:999;
+    }
+    #chat-window{
+      height:200px;
+      overflow-y:auto;
+      background:#0f172a;
+      padding:8px;
+      border-radius:6px;
+      margin-bottom:8px;
+      color:#fff;
+    }
     #chat-window p{margin:.3rem 0;}
     #user-input{width:70%;padding:5px;border-radius:4px;border:none;}
     #send-btn{width:28%;padding:5px;border:none;border-radius:4px;background:#38bdf8;color:#0f172a;cursor:pointer;}
@@ -92,14 +110,14 @@
     <p>Email: <a href="mailto:owaischaudhary002@gmail.com">owaischaudhary002@gmail.com</a></p>
     <p>Phone: +91 85859 87381</p>
     <p>Location: New Delhi, India</p>
-    <p><a href="#">LinkedIn</a> • <a href="#">Instagram</a></p>
+    <p><a href="https://www.linkedin.com/in/mohd-owais-8702b4259" target="_blank">LinkedIn</a> • <a href="https://www.instagram.com/owaisdev8" target="_blank">Instagram</a></p>
   </section>
 
   <footer>
     © Mohd Owais — Built with Python logic • Hosted on GitHub Pages
   </footer>
 
-  <!-- Chatbot HTML -->
+  <!-- Chatbot -->
   <div id="chatbot">
     <div id="chat-window"></div>
     <input type="text" id="user-input" placeholder="Ask OVA..." />
@@ -147,7 +165,9 @@
       userInput.value="";
       chatWindow.scrollTop=chatWindow.scrollHeight;
     };
-    userInput.addEventListener("keypress", e=>{if(e.key==="Enter") sendBtn.click();});
+    userInput.addEventListener("keypress", e=>{
+      if(e.key==="Enter") sendBtn.click();
+    });
   </script>
 
 </body>
