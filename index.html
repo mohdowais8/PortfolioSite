@@ -1,143 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Mohd Owais — AI/ML | Portfolio</title>
-
-  <!-- SEO -->
-  <meta name="description" content="Mohd Owais — BCA (AI/ML) student from New Delhi. Personal portfolio featuring OVA, BharatGPT, AI/ML projects, contact and resume." />
-  <meta name="keywords" content="Mohd Owais, AI, ML, BCA, portfolio, BharatGPT, OVA, Python, Data Analysis" />
-  <meta name="author" content="Mohd Owais" />
-  <meta name="robots" content="index, follow" />
-
-  <!-- Open Graph for social previews -->
-  <meta property="og:title" content="Mohd Owais — AI/ML Portfolio" />
-  <meta property="og:description" content="BCA (AI/ML) student — OVA, BharatGPT, AI/ML projects. Resume & contact." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://mohdowais8.github.io/portfolio/" />
-  <!-- If you later add an image, set og:image -->
-
-  <!-- Structured Data (Person) -->
-  <script type="application/ld+json">
-  {
-    "@context":"http://schema.org",
-    "@type":"Person",
-    "name":"Mohd Owais",
-    "jobTitle":"AI/ML Student",
-    "url":"https://mohdowais8.github.io/portfolio/",
-    "sameAs":[
-      "https://www.linkedin.com/in/mohd-owais-8702b4259",
-      "https://www.instagram.com/owaisdev8"
-    ],
-    "address":{
-      "@type":"PostalAddress",
-      "addressLocality":"New Delhi",
-      "addressCountry":"IN"
-    }
-  }
-  </script>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mohd Owais | AI/ML Portfolio</title>
   <style>
-    /* ---------- Reset & font ---------- */
-    *{box-sizing:border-box;margin:0;padding:0}
-    html,body{height:100%}
-    body{
-      background:#080808;
-      color:#e9f6ff;
-      font-family:Inter, "Segoe UI", Roboto, system-ui, -apple-system, "Helvetica Neue", Arial;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      line-height:1.5;
-      scroll-behavior:smooth;
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: "Poppins", sans-serif;
+      background-color: #0f172a;
+      color: #f1f5f9;
+      line-height: 1.6;
     }
-
-    /* ---------- layout ---------- */
-    header{
-      text-align:center;padding:60px 18px 28px;background:linear-gradient(180deg, rgba(0,40,60,0.6), rgba(0,0,0,0));
-      border-bottom:1px solid rgba(255,255,255,0.03);
+    header {
+      text-align: center;
+      padding: 3rem 1rem;
+      background: linear-gradient(120deg, #1e293b, #0f172a);
     }
-    .container{max-width:1100px;margin:0 auto;padding:30px 18px}
-    nav{display:flex;gap:10px;justify-content:center;padding:10px 0;background:#0b0b0b;position:sticky;top:0;z-index:40;border-bottom:1px solid rgba(255,255,255,0.02)}
-    nav a{color:#9fe6ff;padding:10px 14px;border-radius:8px;text-decoration:none;font-weight:600}
-    nav a:hover{background:rgba(0,191,255,0.08);color:#cfffff}
-
-    h1{font-size:2.6rem;color:#7ff1ff;text-shadow:0 0 14px rgba(0,191,255,0.12)}
-    .subtitle{color:#bfefff;margin-top:8px;font-size:1rem}
-    #clock{margin-top:12px;color:#9fe6ff;font-weight:700;letter-spacing:1px;text-shadow:0 0 8px rgba(0,191,255,0.06)}
-
-    /* ---------- Hero typing ---------- */
-    .typing-wrap{margin-top:18px;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
-    .typing-badge{background:rgba(0,191,255,0.08);padding:8px 14px;border-radius:999px;border:1px solid rgba(0,191,255,0.06);color:#bff5ff;font-weight:700}
-    #typing{font-weight:700;color:#e9ffff;font-size:1.05rem}
-
-    /* ---------- sections ---------- */
-    section{padding:70px 0;opacity:0;transform:translateY(40px);transition:all .75s cubic-bezier(.2,.9,.2,1)}
-    section.visible{opacity:1;transform:none}
-    section h2{color:#75ecff;margin-bottom:18px;border-bottom:2px solid rgba(117,236,255,0.08);display:inline-block;padding-bottom:6px}
-
-    /* ---------- skills ---------- */
-    .skills-grid{display:flex;flex-wrap:wrap;gap:14px}
-    .skill{
-      background:linear-gradient(135deg, rgba(255,255,255,0.02), rgba(0,0,0,0.12));
-      padding:14px;border-radius:12px;min-width:180px;flex:1 1 220px;border-left:4px solid rgba(0,191,255,0.14);
-      box-shadow:0 6px 18px rgba(0,0,0,0.6);
+    header h1 { font-size: 2.2rem; color: #38bdf8; }
+    header p { color: #94a3b8; }
+    #clock { margin: 1rem 0; font-size: 1.3rem; color: #facc15; }
+    .typing { font-size: 1.5rem; margin: 1rem 0; }
+    .btn {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.7rem 1.5rem;
+      background: #38bdf8;
+      color: #0f172a;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: 0.3s;
     }
-    .skill-title{font-weight:800;margin-bottom:8px;color:#dffeff}
-    .skill-desc{color:#cfeeff;font-size:.95rem}
-
-    /* ---------- skill bars ---------- */
-    .bar-wrap{background:#0f0f10;border-radius:999px;padding:6px;margin-top:10px}
-    .bar{height:14px;border-radius:999px;width:0%;background:linear-gradient(90deg,#00d4ff,#0077ff);transition:width 1.2s ease}
-
-    /* ---------- projects ---------- */
-    .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
-    .card{
-      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);position:relative;overflow:hidden;
-      box-shadow:0 8px 30px rgba(0,0,0,0.6);
-      transition:transform .35s ease, box-shadow .35s ease;
+    .btn:hover { background: #facc15; }
+    nav {
+      text-align: center;
+      background: #1e293b;
+      padding: 0.8rem;
     }
-    .card:hover{transform:translateY(-8px);box-shadow:0 18px 40px rgba(0,191,255,0.06)}
-    .card h3{color:#cfffff;margin-bottom:8px}
-    .card p{color:#cfeeff;font-size:.98rem}
-
-    .overlay{position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,191,255,0.03), rgba(0,0,0,0.2));opacity:0;transition:opacity .35s;display:flex;align-items:center;justify-content:center;color:#e6ffff;font-weight:700}
-    .card:hover .overlay{opacity:1}
-
-    /* ---------- contact ---------- */
-    .contact-list{display:flex;flex-direction:column;gap:8px}
-    .contact-list a{color:#bff1ff;font-weight:700;text-decoration:none}
-    .contact-list a:hover{text-decoration:underline}
-
-    /* ---------- footer ---------- */
-    footer{padding:36px 0;text-align:center;color:#9fbfcf;border-top:1px solid rgba(255,255,255,0.02)}
-
-    /* responsive */
-    @media (max-width:720px){
-      h1{font-size:2rem}
-      nav{overflow:auto;padding:8px}
-      .typing-wrap{flex-direction:column;gap:8px}
+    nav a {
+      color: #f8fafc;
+      text-decoration: none;
+      margin: 0 1rem;
+      transition: 0.3s;
+    }
+    nav a:hover { color: #38bdf8; }
+    section {
+      padding: 2rem 1rem;
+      max-width: 800px;
+      margin: auto;
+    }
+    section h2 { color: #38bdf8; margin-bottom: 1rem; }
+    .project {
+      background: #1e293b;
+      margin: 1rem 0;
+      padding: 1rem;
+      border-radius: 8px;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #1e293b;
+      color: #94a3b8;
     }
   </style>
 </head>
 <body>
-
   <header>
-    <div class="container">
-      <h1>Mohd Owais</h1>
-      <p class="subtitle">BCA (AI/ML) Student • Python & Automation • AI Enthusiast</p>
-      <div id="clock">00:00:00</div>
-
-      <div class="typing-wrap" aria-hidden="false">
-        <div class="typing-badge">I build</div>
-        <div id="typing">AI / ML Systems</div>
-      </div>
-
-      <p style="margin-top:18px">
-        <a href="resume.pdf" download style="display:inline-block;background:#00c8ff;color:#00121a;padding:10px 16px;border-radius:10px;font-weight:800;text-decoration:none;box-shadow:0 8px 24px rgba(0,200,255,0.08)">Download Resume</a>
-      </p>
-    </div>
+    <h1>Mohd Owais</h1>
+    <p>BCA (AI/ML) Student • Python & Automation • AI Enthusiast</p>
+    <div id="clock">00:00:00</div>
+    <h2 class="typing">I build <span id="typed"></span></h2>
+    <a href="#" class="btn">Download Resume</a>
   </header>
 
   <nav>
@@ -147,158 +80,82 @@
     <a href="#contact">Contact</a>
   </nav>
 
-  <main class="container" role="main">
-    <section id="about" aria-labelledby="about-heading">
-      <h2 id="about-heading">About Me</h2>
-      <p style="max-width:850px;color:#cfeeff">
-        I'm <strong>Mohd Owais</strong> from New Delhi — a BCA (AI/ML) student focused on building practical AI systems and automation tools.
-        I work with Python and machine learning libraries to deliver data-driven solutions and personal assistant tools like OVA and BharatGPT.
-      </p>
-    </section>
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+      I'm Mohd Owais from New Delhi — a BCA (AI/ML) student focused on building practical AI systems and automation tools.
+      I work with Python and machine learning libraries to deliver data-driven solutions and personal assistant tools like OVA and BharatGPT.
+    </p>
+  </section>
 
-    <section id="skills" aria-labelledby="skills-heading">
-      <h2 id="skills-heading">Key Skills</h2>
-      <div class="skills-grid">
-        <div class="skill">
-          <div class="skill-title">Python</div>
-          <div class="skill-desc">Advanced scripting, automation, data manipulation and building ML prototypes.</div>
-          <div class="bar-wrap"><div class="bar" data-width="95%"></div></div>
-        </div>
+  <section id="skills">
+    <h2>Key Skills</h2>
+    <ul>
+      <li><strong>Python:</strong> Advanced scripting, automation, data manipulation and building ML prototypes.</li>
+      <li><strong>AI & ML:</strong> Model building, preprocessing, classification and predictive pipelines.</li>
+      <li><strong>Data Analysis:</strong> Pandas, visualization basics and extracting insights for decisions.</li>
+      <li><strong>Automation & Databases:</strong> Scripting, cron-style automation, and MySQL integration in Python systems.</li>
+    </ul>
+  </section>
 
-        <div class="skill">
-          <div class="skill-title">AI & Machine Learning</div>
-          <div class="skill-desc">Model building, preprocessing, classification and predictive pipelines.</div>
-          <div class="bar-wrap"><div class="bar" data-width="90%"></div></div>
-        </div>
+  <section id="projects">
+    <h2>Featured Projects</h2>
+    <div class="project">
+      <h3>OVA — Personal AI Assistant</h3>
+      <p>Personal assistant built in Python focused on task automation, voice interaction, and smart workflows.</p>
+      <p><strong>Tech:</strong> Python • Automation • Speech • Scripting</p>
+    </div>
+    <div class="project">
+      <h3>BharatGPT</h3>
+      <p>All-in-one AI assistant platform for Indian users — educational help, legal guidance, and localized assistants.</p>
+      <p><strong>Tech:</strong> Python • NLP • Backend Integration</p>
+    </div>
+    <div class="project">
+      <h3>AI/ML Predictive Analysis</h3>
+      <p>End-to-end ML project: data cleaning, feature engineering, model training and evaluation for predictions.</p>
+      <p><strong>Tech:</strong> Python • Pandas • Scikit-Learn</p>
+    </div>
+  </section>
 
-        <div class="skill">
-          <div class="skill-title">Data Analysis</div>
-          <div class="skill-desc">Pandas, visualization basics and extracting insights for decisions.</div>
-          <div class="bar-wrap"><div class="bar" data-width="85%"></div></div>
-        </div>
-
-        <div class="skill">
-          <div class="skill-title">Automation & Databases</div>
-          <div class="skill-desc">Scripting, cron-style automation, and MySQL integration in Python systems.</div>
-          <div class="bar-wrap"><div class="bar" data-width="80%"></div></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="projects" aria-labelledby="projects-heading">
-      <h2 id="projects-heading">Featured Projects</h2>
-      <div class="projects-grid">
-        <article class="card" tabindex="0">
-          <h3>OVA — Personal AI Assistant</h3>
-          <p>Personal assistant built in Python focused on task automation, voice interaction, and smart workflows.</p>
-          <div class="overlay">Tech: Python • Automation • Speech • Scripting</div>
-        </article>
-
-        <article class="card" tabindex="0">
-          <h3>BharatGPT</h3>
-          <p>All-in-one AI assistant platform for Indian users — educational help, legal guidance, and localized assistants.</p>
-          <div class="overlay">Tech: Python • NLP • Backend Integration</div>
-        </article>
-
-        <article class="card" tabindex="0">
-          <h3>AI/ML Predictive Analysis</h3>
-          <p>End-to-end ML project: data cleaning, feature engineering, model training and evaluation for predictions.</p>
-          <div class="overlay">Tech: Python • Pandas • Scikit-Learn</div>
-        </article>
-      </div>
-    </section>
-
-    <section id="contact" aria-labelledby="contact-heading">
-      <h2 id="contact-heading">Contact</h2>
-      <div class="contact-list">
-        <a href="mailto:owaischaudhary002@gmail.com">owaischaudhary002@gmail.com</a>
-        <a href="tel:+918585987381">+91 85859 87381</a>
-        <div style="margin-top:6px;color:#bfeff7">Location: New Delhi, India</div>
-        <div style="margin-top:6px">
-          <a href="https://www.linkedin.com/in/mohd-owais-8702b4259" target="_blank">LinkedIn</a> •
-          <a href="https://www.instagram.com/owaisdev8" target="_blank">Instagram</a>
-        </div>
-      </div>
-    </section>
-  </main>
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:owaischaudhary002@gmail.com">owaischaudhary002@gmail.com</a></p>
+    <p>Phone: +91 85859 87381</p>
+    <p>Location: New Delhi, India</p>
+    <p><a href="#">LinkedIn</a> • <a href="#">Instagram</a></p>
+  </section>
 
   <footer>
-    <div class="container">
-      <div style="margin-bottom:8px">© <span id="year"></span> Mohd Owais</div>
-      <div style="font-size:.9rem;color:#9fcfdc">Built with Python logic • Portfolio hosted on GitHub Pages</div>
-    </div>
+    © Mohd Owais — Built with Python logic • Hosted on GitHub Pages
   </footer>
 
   <script>
-    /* ---------- Clock ---------- */
-    function updateClock(){
-      const c = document.getElementById('clock');
+    // Live clock
+    setInterval(() => {
       const now = new Date();
-      const h = String(now.getHours()).padStart(2,'0');
-      const m = String(now.getMinutes()).padStart(2,'0');
-      const s = String(now.getSeconds()).padStart(2,'0');
-      c.textContent = `${h}:${m}:${s}`;
+      document.getElementById("clock").textContent = now.toLocaleTimeString();
+    }, 1000);
+
+    // Typing effect
+    const words = ["AI / ML Systems", "Automation Tools", "Intelligent Assistants"];
+    let i = 0, j = 0, current = "", isDeleting = false;
+    function type() {
+      const display = document.getElementById("typed");
+      current = words[i];
+      display.textContent = current.substring(0, j);
+      if (!isDeleting && j++ === current.length) {
+        isDeleting = true;
+        setTimeout(type, 1000);
+      } else if (isDeleting && j-- === 0) {
+        isDeleting = false;
+        i = (i + 1) % words.length;
+      }
+      setTimeout(type, isDeleting ? 80 : 120);
     }
-    setInterval(updateClock,1000);
-    updateClock();
-
-    /* ---------- Typing effect (simple rotating phrases) ---------- */
-    (function(){
-      const phrases = ["AI / ML Systems","Automation & Scripting","Data-driven Solutions"];
-      let i = 0;
-      const el = document.getElementById('typing');
-      setInterval(()=> {
-        el.style.opacity = 0;
-        setTimeout(()=> {
-          el.textContent = phrases[i];
-          el.style.opacity = 1;
-          i = (i+1) % phrases.length;
-        }, 300);
-      }, 2200);
-    })();
-
-    /* ---------- Smooth reveal on scroll ---------- */
-    const sections = document.querySelectorAll('section');
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach(en => { if(en.isIntersecting) en.target.classList.add('visible'); });
-    }, { threshold: 0.18 });
-    sections.forEach(s => io.observe(s));
-
-    /* ---------- Skill bars animate ---------- */
-    function animateSkillBars(){
-      document.querySelectorAll('.bar').forEach(b=>{
-        const w = b.getAttribute('data-width') || '80%';
-        b.style.width = w;
-      });
-    }
-    window.addEventListener('load', animateSkillBars);
-
-    /* ---------- Footer year ---------- */
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    /* ---------- Accessibility: enable keyboard focus hover effect ---------- */
-    document.querySelectorAll('.card').forEach(card=>{
-      card.addEventListener('focus', ()=> card.classList.add('hover'));
-      card.addEventListener('blur', ()=> card.classList.remove('hover'));
-    });
-
-    /* ---------- Analytics / Visitor Counter (PLACEHOLDERS) ----------
-       Option A: Google Analytics 4 (replace MEASUREMENT_ID)
-       Paste this script into <head> if you create GA4 property and set ID:
-       <script async src="https://www.googletagmanager.com/gtag/js?id=MEASUREMENT_ID"></script>
-       <script>
-         window.dataLayer = window.dataLayer || [];
-         function gtag(){dataLayer.push(arguments);}
-         gtag('js', new Date());
-         gtag('config', 'MEASUREMENT_ID');
-       </script>
-
-       Option B: quick visitor counter (counter.dev) - signup to get an ID and replace "YOUR_ID"
-       Example (paste before </body>):
-       <script src="https://counter.dev/script.js" data-id="YOUR_ID" async></script>
-    ------------------------------------------------------------------ */
+    type();
   </script>
-
 </body>
 </html>
+
+
 
