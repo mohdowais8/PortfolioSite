@@ -1,70 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mohd Owais | AI/ML Portfolio</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: "Poppins", sans-serif;
-      background-color: #0f172a;
-      color: #f1f5f9;
-      line-height: 1.6;
-    }
-    header {
-      text-align: center;
-      padding: 3rem 1rem;
-      background: linear-gradient(120deg, #1e293b, #0f172a);
-    }
-    header h1 { font-size: 2.2rem; color: #38bdf8; }
-    header p { color: #94a3b8; }
-    #clock { margin: 1rem 0; font-size: 1.3rem; color: #facc15; }
-    .typing { font-size: 1.5rem; margin: 1rem 0; }
-    .btn {
-      display: inline-block;
-      margin-top: 1rem;
-      padding: 0.7rem 1.5rem;
-      background: #38bdf8;
-      color: #0f172a;
-      border-radius: 8px;
-      text-decoration: none;
-      transition: 0.3s;
-    }
-    .btn:hover { background: #facc15; }
-    nav {
-      text-align: center;
-      background: #1e293b;
-      padding: 0.8rem;
-    }
-    nav a {
-      color: #f8fafc;
-      text-decoration: none;
-      margin: 0 1rem;
-      transition: 0.3s;
-    }
-    nav a:hover { color: #38bdf8; }
-    section {
-      padding: 2rem 1rem;
-      max-width: 800px;
-      margin: auto;
-    }
-    section h2 { color: #38bdf8; margin-bottom: 1rem; }
-    .project {
-      background: #1e293b;
-      margin: 1rem 0;
-      padding: 1rem;
-      border-radius: 8px;
-    }
-    footer {
-      text-align: center;
-      padding: 1rem;
-      background: #1e293b;
-      color: #94a3b8;
-    }
+    /* ----------- General ----------- */
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:"Poppins",sans-serif;background:#0f172a;color:#f1f5f9;line-height:1.6;}
+    a{text-decoration:none;color:#38bdf8;transition:0.3s;}
+    a:hover{color:#facc15;}
+    header{text-align:center;padding:3rem 1rem;background:linear-gradient(120deg,#1e293b,#0f172a);}
+    header h1{font-size:2.2rem;color:#38bdf8;}
+    header p{color:#94a3b8;}
+    #clock{margin:1rem 0;font-size:1.3rem;color:#facc15;}
+    .typing{font-size:1.5rem;margin:1rem 0;}
+    .btn{display:inline-block;margin-top:1rem;padding:.7rem 1.5rem;background:#38bdf8;color:#0f172a;border-radius:8px;}
+    .btn:hover{background:#facc15;}
+    nav{text-align:center;background:#1e293b;padding:.8rem;}
+    nav a{margin:0 1rem;}
+    section{padding:2rem 1rem;max-width:800px;margin:auto;}
+    section h2{color:#38bdf8;margin-bottom:1rem;}
+    .project{background:#1e293b;margin:1rem 0;padding:1rem;border-radius:8px;}
+    footer{text-align:center;padding:1rem;background:#1e293b;color:#94a3b8;}
+
+    /* ----------- Chatbot ----------- */
+    #chatbot{position:fixed;bottom:20px;right:20px;width:300px;background:#1e293b;padding:10px;border-radius:10px;box-shadow:0 4px 20px rgba(0,0,0,0.6);z-index:999;}
+    #chat-window{height:200px;overflow-y:auto;background:#0f172a;padding:8px;border-radius:6px;margin-bottom:8px;}
+    #chat-window p{margin:.3rem 0;}
+    #user-input{width:70%;padding:5px;border-radius:4px;border:none;}
+    #send-btn{width:28%;padding:5px;border:none;border-radius:4px;background:#38bdf8;color:#0f172a;cursor:pointer;}
+    #send-btn:hover{background:#facc15;}
   </style>
 </head>
 <body>
+
   <header>
     <h1>Mohd Owais</h1>
     <p>BCA (AI/ML) Student • Python & Automation • AI Enthusiast</p>
@@ -129,8 +99,15 @@
     © Mohd Owais — Built with Python logic • Hosted on GitHub Pages
   </footer>
 
+  <!-- Chatbot HTML -->
+  <div id="chatbot">
+    <div id="chat-window"></div>
+    <input type="text" id="user-input" placeholder="Ask OVA..." />
+    <button id="send-btn">Send</button>
+  </div>
+
   <script>
-    // Live clock
+    // Clock
     setInterval(() => {
       const now = new Date();
       document.getElementById("clock").textContent = now.toLocaleTimeString();
@@ -138,24 +115,40 @@
 
     // Typing effect
     const words = ["AI / ML Systems", "Automation Tools", "Intelligent Assistants"];
-    let i = 0, j = 0, current = "", isDeleting = false;
-    function type() {
-      const display = document.getElementById("typed");
-      current = words[i];
-      display.textContent = current.substring(0, j);
-      if (!isDeleting && j++ === current.length) {
-        isDeleting = true;
-        setTimeout(type, 1000);
-      } else if (isDeleting && j-- === 0) {
-        isDeleting = false;
-        i = (i + 1) % words.length;
-      }
-      setTimeout(type, isDeleting ? 80 : 120);
+    let i=0,j=0,isDeleting=false;
+    function type(){
+      const el = document.getElementById("typed");
+      const current = words[i];
+      el.textContent = current.substring(0,j);
+      if(!isDeleting && j++===current.length){isDeleting=true; setTimeout(type,1000);}
+      else if(isDeleting && j--===0){isDeleting=false;i=(i+1)%words.length;}
+      setTimeout(type,isDeleting?80:120);
     }
     type();
+
+    // Chatbot logic
+    const chatWindow = document.getElementById("chat-window");
+    const userInput = document.getElementById("user-input");
+    const sendBtn = document.getElementById("send-btn");
+    const responses = {
+      "hello":"Hi! I'm OVA, your personal assistant.",
+      "hi":"Hello! How can I help you?",
+      "projects":"I have OVA, BharatGPT, and AI/ML predictive analysis projects.",
+      "skills":"I specialize in Python, AI/ML, Data Analysis & Automation.",
+      "resume":"You can download my resume from the button above.",
+      "default":"Sorry, I didn't understand. Try asking about 'skills', 'projects', or 'resume'."
+    };
+    sendBtn.onclick = () => {
+      const input = userInput.value.toLowerCase().trim();
+      if(!input) return;
+      const reply = responses[input] || responses["default"];
+      chatWindow.innerHTML += `<p><strong>You:</strong> ${input}</p>`;
+      chatWindow.innerHTML += `<p><strong>OVA:</strong> ${reply}</p>`;
+      userInput.value="";
+      chatWindow.scrollTop=chatWindow.scrollHeight;
+    };
+    userInput.addEventListener("keypress", e=>{if(e.key==="Enter") sendBtn.click();});
   </script>
+
 </body>
 </html>
-
-
-
