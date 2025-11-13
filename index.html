@@ -23,6 +23,7 @@
     section h2{color:#38bdf8;margin-bottom:1rem;}
     .project{background:#1e293b;margin:1rem 0;padding:1rem;border-radius:8px;}
     footer{text-align:center;padding:1rem;background:#1e293b;color:#94a3b8;}
+    ul{list-style:disc inside;}
 
     /* ----------- Modern Chatbot ----------- */
     #chatbot {
@@ -109,7 +110,7 @@
 
   <header>
     <h1>Mohd Owais</h1>
-    <p>BCA (AI/ML) Student • Python & Automation • AI Enthusiast</p>
+    <p>BCA (AI/ML) Student • Python & Full Stack Data Analytics Enthusiast</p>
     <div id="clock">00:00:00</div>
     <h2 class="typing">I build <span id="typed"></span></h2>
     <a href="#" class="btn">Download Resume</a>
@@ -125,18 +126,21 @@
   <section id="about">
     <h2>About Me</h2>
     <p>
-      I'm Mohd Owais from New Delhi — a BCA (AI/ML) student focused on building practical AI systems and automation tools.
-      I work with Python and machine learning libraries to deliver data-driven solutions and personal assistant tools like OVA and BharatGPT.
+      I'm Mohd Owais from New Delhi — a BCA (AI/ML) student focused on building practical AI systems and analytics solutions.
+      I work with Python, databases, and machine learning to deliver data-driven results and personal assistant tools like OVA and BharatGPT.
     </p>
   </section>
 
   <section id="skills">
     <h2>Key Skills</h2>
     <ul>
-      <li><strong>Python:</strong> Advanced scripting, automation, data manipulation and building ML prototypes.</li>
-      <li><strong>AI & ML:</strong> Model building, preprocessing, classification and predictive pipelines.</li>
-      <li><strong>Data Analysis:</strong> Pandas, visualization basics and extracting insights for decisions.</li>
-      <li><strong>Automation & Databases:</strong> Scripting, cron-style automation, and MySQL integration in Python systems.</li>
+      <li><strong>Python:</strong> Advanced scripting, automation, ML prototyping.</li>
+      <li><strong>Data Analysis:</strong> Pandas, NumPy, Excel, visualization, dashboard creation.</li>
+      <li><strong>Databases:</strong> SQL, MySQL, MongoDB integration.</li>
+      <li><strong>Machine Learning:</strong> Scikit-learn, predictive models, classification, regression.</li>
+      <li><strong>Data Visualization:</strong> Matplotlib, Seaborn, Plotly, dashboarding.</li>
+      <li><strong>Web & Full Stack Basics:</strong> HTML, CSS, JS, Flask/Django basics for data apps.</li>
+      <li><strong>Automation & Scripting:</strong> Cron jobs, API integration, file handling, ETL pipelines.</li>
     </ul>
   </section>
 
@@ -153,9 +157,9 @@
       <p><strong>Tech:</strong> Python • NLP • Backend Integration</p>
     </div>
     <div class="project">
-      <h3>AI/ML Predictive Analysis</h3>
-      <p>End-to-end ML project: data cleaning, feature engineering, model training and evaluation for predictions.</p>
-      <p><strong>Tech:</strong> Python • Pandas • Scikit-Learn</p>
+      <h3>Face Detection System</h3>
+      <p>Real-time face detection using OpenCV and Python for security and automation projects.</p>
+      <p><strong>Tech:</strong> Python • OpenCV • Computer Vision</p>
     </div>
   </section>
 
@@ -164,7 +168,8 @@
     <p>Email: <a href="mailto:owaischaudhary002@gmail.com">owaischaudhary002@gmail.com</a></p>
     <p>Phone: +91 85859 87381</p>
     <p>Location: New Delhi, India</p>
-    <p><a href="https://www.linkedin.com/in/mohd-owais-8702b4259" target="_blank">LinkedIn</a> • <a href="https://www.instagram.com/owaisdev8" target="_blank">Instagram</a></p>
+    <p><a href="https://www.linkedin.com/in/mohd-owais-8702b4259" target="_blank">LinkedIn</a> • 
+       <a href="https://www.instagram.com/owaisdev8" target="_blank">Instagram</a></p>
   </section>
 
   <footer>
@@ -192,15 +197,29 @@
     }, 1000);
 
     // Typing effect
-    const words = ["AI / ML Systems", "Automation Tools", "Intelligent Assistants"];
-    let i=0,j=0,isDeleting=false;
-    function type(){
+    const words = ["AI / ML Systems", "Automation Tools", "Data Analytics Solutions"];
+    let i = 0, j = 0, isDeleting = false;
+    function type() {
       const el = document.getElementById("typed");
       const current = words[i];
-      el.textContent = current.substring(0,j);
-      if(!isDeleting && j++===current.length){isDeleting=true; setTimeout(type,1000);}
-      else if(isDeleting && j--===0){isDeleting=false;i=(i+1)%words.length;}
-      setTimeout(type,isDeleting?80:120);
+
+      if (!isDeleting) {
+        el.textContent = current.substring(0, j+1);
+        j++;
+        if (j === current.length) {
+          isDeleting = true;
+          setTimeout(type, 1500);
+          return;
+        }
+      } else {
+        el.textContent = current.substring(0, j-1);
+        j--;
+        if (j === 0) {
+          isDeleting = false;
+          i = (i + 1) % words.length;
+        }
+      }
+      setTimeout(type, isDeleting ? 80 : 120);
     }
     type();
 
@@ -211,8 +230,8 @@
     const responses = {
       "hello":"Hi! I'm OVA, your personal assistant.",
       "hi":"Hello! How can I help you?",
-      "projects":"I have OVA, BharatGPT, and AI/ML predictive analysis projects.",
-      "skills":"I specialize in Python, AI/ML, Data Analysis & Automation.",
+      "projects":"I have OVA, BharatGPT, and Face Detection projects.",
+      "skills":"I specialize in Python, Full Stack Data Analytics, ML & Automation.",
       "resume":"You can download my resume from the button above.",
       "default":"Sorry, I didn't understand. Try asking about 'skills', 'projects', or 'resume'."
     };
