@@ -56,6 +56,9 @@ button:hover{background:#00e6ff;}
 
 /* ---------- Footer ---------- */
 footer{text-align:center;padding:30px 0;color:#9fcfdc;font-size:.9rem;border-top:1px solid rgba(255,255,255,0.05);}
+.social-icons a{margin:0 10px;display:inline-block;transition:transform 0.3s;}
+.social-icons a:hover{transform:scale(1.3);}
+.social-icons img{width:28px;height:28px;filter: invert(85%) sepia(0%) saturate(0%) hue-rotate(170deg) brightness(110%) contrast(100%);}
 
 /* ---------- Chatbot ---------- */
 .chatbot{position:fixed;bottom:20px;right:20px;width:320px;height:420px;background:#0b1419;border:1px solid #00d4ff30;border-radius:14px;box-shadow:0 8px 20px rgba(0,0,0,0.5);overflow:hidden;display:flex;flex-direction:column;}
@@ -146,6 +149,18 @@ footer{text-align:center;padding:30px 0;color:#9fcfdc;font-size:.9rem;border-top
 
 <footer>
 <p>© <span id="year"></span> Mohd Owais | Built with 💻 & AI</p>
+<!-- Social Media Links -->
+<div class="social-icons">
+  <a href="https://github.com/MohdOwais8" target="_blank">
+    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub">
+  </a>
+  <a href="https://www.linkedin.com/in/mohd-owais-8702b4259" target="_blank">
+    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn">
+  </a>
+  <a href="https://www.instagram.com/owaisdev9/" target="_blank">
+    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram">
+  </a>
+</div>
 </footer>
 
 <!-- Chatbot -->
@@ -169,21 +184,14 @@ footer{text-align:center;padding:30px 0;color:#9fcfdc;font-size:.9rem;border-top
 <script>
 // Typing effect
 const phrases=["AI / ML Systems","Full Stack Projects","Data Analytics Dashboards"];
-let i=0;setInterval(()=>{
-document.getElementById("typing").textContent=phrases[i];
-i=(i+1)%phrases.length;
-},3000);
+let i=0;setInterval(()=>{document.getElementById("typing").textContent=phrases[i];i=(i+1)%phrases.length;},3000);
 
 // Scroll animation
-const obs=new IntersectionObserver((entries)=>{
-entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add("visible")});
-},{threshold:0.2});
+const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add("visible")});},{threshold:0.2});
 document.querySelectorAll("section").forEach(s=>obs.observe(s));
 
 // Skill bar animation
-window.addEventListener("load",()=>{
-document.querySelectorAll(".bar").forEach(b=>b.style.width=b.dataset.width);
-});
+window.addEventListener("load",()=>{document.querySelectorAll(".bar").forEach(b=>b.style.width=b.dataset.width);});
 
 // Year
 document.getElementById("year").textContent=new Date().getFullYear();
@@ -224,5 +232,4 @@ document.getElementById('about').after(contribDiv);
 </script>
 </body>
 </html>
-
 
