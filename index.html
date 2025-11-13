@@ -188,59 +188,30 @@ document.querySelectorAll(".bar").forEach(b=>b.style.width=b.dataset.width);
 // Year
 document.getElementById("year").textContent=new Date().getFullYear();
 
-<!-- OVA Floating Button -->
-<div id="ovaBtn" style="position:fixed;bottom:25px;right:25px;width:60px;height:60px;background:#00c8ff;border-radius:50%;box-shadow:0 6px 20px rgba(0,0,0,0.5);cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:200;">
-  <img src="https://i.imgur.com/vz6P3pY.png" alt="OVA Logo" style="width:50px;height:50px;border-radius:50%;">
-</div>
-
-<!-- Chatbot -->
-<div class="chatbot" id="chatbot" style="display:none;">
-  <div class="chatbot-header"><div class="avatar"></div> OVA — Virtual Assistant</div>
-  <div class="chat-body" id="chatBody"></div>
-  <div class="chat-input">
-    <input type="text" id="chatInput" placeholder="Ask OVA..." />
-    <button onclick="sendMsg()">➤</button>
-  </div>
-</div>
-
-<script>
-// Floating OVA button toggle
-const ovaBtn = document.getElementById("ovaBtn");
-const chatbot = document.getElementById("chatbot");
-ovaBtn.addEventListener("click", () => {
-  if(chatbot.style.display === "none"){
-    chatbot.style.display = "flex";
-    chatBody.scrollTop = chatBody.scrollHeight;
-  } else {
-    chatbot.style.display = "none";
-  }
-});
-
-// Chatbot script (memory + TTS) remains the same
+// Chatbot
 const chatBody=document.getElementById("chatBody");
 const chatInput=document.getElementById("chatInput");
 let chatMemory=[];
 function sendMsg(){
-  const msg=chatInput.value.trim();if(!msg)return;
-  chatBody.innerHTML+=`<div class='chat-msg user'>${msg}</div>`;
-  chatMemory.push("User: "+msg);
-  chatInput.value="";
-  setTimeout(()=>{
-    const reply=getReply(msg.toLowerCase());
-    chatBody.innerHTML+=`<div class='chat-msg bot'>${reply}</div>`;
-    chatMemory.push("OVA: "+reply);
-    chatBody.scrollTop=chatBody.scrollHeight;
-    speechSynthesis.speak(new SpeechSynthesisUtterance(reply));
-  },600);
+const msg=chatInput.value.trim();if(!msg)return;
+chatBody.innerHTML+=`<div class='chat-msg user'>${msg}</div>`;
+chatMemory.push("User: "+msg);
+chatInput.value="";
+setTimeout(()=>{
+const reply=getReply(msg.toLowerCase());
+chatBody.innerHTML+=`<div class='chat-msg bot'>${reply}</div>`;
+chatMemory.push("OVA: "+reply);
+chatBody.scrollTop=chatBody.scrollHeight;
+speechSynthesis.speak(new SpeechSynthesisUtterance(reply));
+},600);
 }
 function getReply(q){
-  if(q.includes("hello")) return "Hi! I'm OVA. How can I help?";
-  if(q.includes("who are you")) return "I'm OVA, your personal AI assistant.";
-  if(q.includes("project")) return "You can explore OVA, BharatGPT, and Face Detection in the Projects section.";
-  if(q.includes("skills")) return "Python, Full Stack, Data Analytics, and ML!";
-  return "I'm still learning. Try asking about 'projects' or 'skills'.";
+if(q.includes("hello")) return "Hi! I'm OVA. How can I help?";
+if(q.includes("who are you")) return "I'm OVA, your personal AI assistant.";
+if(q.includes("project")) return "You can explore OVA, BharatGPT, and Face Detection in the Projects section.";
+if(q.includes("skills")) return "Python, Full Stack, Data Analytics, and ML!";
+return "I'm still learning. Try asking about 'projects' or 'skills'.";
 }
-</script>
 
 // Resume Modal
 function openResume(){document.getElementById("resumeModal").style.display="flex";}
@@ -253,4 +224,5 @@ document.getElementById('about').after(contribDiv);
 </script>
 </body>
 </html>
+
 
