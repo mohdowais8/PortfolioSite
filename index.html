@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mohd Owais | Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Roboto',sans-serif;scroll-behavior:smooth;}
+body{background:#0a0a0a;color:#fff;transition:0.5s;overflow-x:hidden;}
+body.light{background:#f2f2f2;color:#111;}
+a{text-decoration:none;color:inherit;}
+
+/* Header */
+header{position:sticky;top:0;background:#111;display:flex;justify-content:space-between;align-items:center;padding:20px 50px;z-index:100;transition:0.5s;}
+body.light header{background:#fff;}
+header h1{color:#ff4d4d;font-size:24px;text-shadow:0 0 10px #ff4d4d;}
+header nav a{margin-left:20px;color:#ccc;font-weight:500;transition:0.3s;}
+header nav a:hover{color:#ff4d4d;}
+#themeToggle{cursor:pointer;color:#ff4d4d;font-size:20px;margin-left:20px;}
+body.light #themeToggle{color:#ff4d4d;}
+
+/* Hero */
+#hero{position:relative;height:90vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;overflow:hidden;background:linear-gradient(120deg,#111,#222);animation:bgAnimate 10s ease-in-out infinite alternate;}
+@keyframes bgAnimate{0%{background:linear-gradient(120deg,#111,#222);}50%{background:linear-gradient(120deg,#222,#111);}100%{background:linear-gradient(120deg,#111,#222);}}
+#hero h1{font-size:48px;color:#ff4d4d;text-shadow:0 0 20px #ff4d4d,0 0 30px #ff4d4d,0 0 40px #ff4d4d;animation:neon 1.5s infinite alternate;}
+#hero p{font-size:24px;color:#fff;margin-top:15px;}
+@keyframes neon{
+from{text-shadow:0 0 5px #ff4d4d,0 0 10px #ff4d4d,0 0 20px #ff4d4d;}
+to{text-shadow:0 0 20px #ff4d4d,0 0 30px #ff4d4d,0 0 40px #ff4d4d;}
+}
+
+/* Sections */
+section{padding:80px 50px;opacity:0;transform:translateY(50px);transition:all 1s ease;}
+section.show{opacity:1;transform:translateY(0);}
+h2{font-size:32px;margin-bottom:30px;color:#ff4d4d;border-bottom:2px solid #ff4d4d;display:inline-block;padding-bottom:5px;}
+
+/* Projects */
+.projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;margin-bottom:20px;}
+.project-card{background:#1f1f1f;padding:25px;border-radius:10px;transition:0.3s;position:relative;overflow:hidden;cursor:pointer;transform:perspective(1000px);}
+.project-card:hover{transform:perspective(1000px) rotateY(5deg) translateY(-15px);box-shadow:0 0 35px rgba(255,77,77,0.8);}
+body.light .project-card{background:#e0e0e0;}
+.project-card h3{color:#ff4d4d;margin-bottom:10px;}
+.project-card p{color:#ccc;margin-bottom:15px;}
+body.light .project-card p{color:#111;}
+.project-card .tech-badges{display:flex;gap:5px;flex-wrap:wrap;margin-top:10px;}
+.project-card .tech-badges span{background:#6200ee;padding:3px 8px;border-radius:4px;font-size:12px;color:#fff;transition:0.3s;}
+.project-card .tech-badges span:hover{background:#ff4d4d;}
+
+/* Skills */
+.skills{display:flex;flex-wrap:wrap;gap:40px;justify-content:center;margin-bottom:50px;}
+.skill{text-align:center;position:relative;}
+.skill svg{width:100px;height:100px;transform:rotate(-90deg);}
+.skill circle{transition:1s stroke-dashoffset;}
+.skill-text{margin-top:10px;color:#ccc;position:absolute;width:100%;top:110%;left:0;text-align:center;}
+
+/* Experience */
+.timeline{position:relative;margin-left:30px;}
+.job{margin-bottom:40px;position:relative;padding-left:30px;opacity:0;transform:translateX(-50px);transition:all 0.8s ease;}
+.job.show{opacity:1;transform:translateX(0);}
+.job::before{content:"";position:absolute;left:-15px;top:0;width:10px;height:10px;background:#ff4d4d;border-radius:50%;}
+.job h4{color:#ff4d4d;margin-bottom:5px;}
+.job span,.job p{color:#ccc;}
+
+/* Contact */
+#contact form{max-width:400px;margin:auto;display:flex;flex-direction:column;gap:15px;}
+#contact input,#contact textarea{padding:10px;border:none;border-radius:5px;background:#111;color:#fff;}
+body.light #contact input, body.light #contact textarea{background:#f0f0f0;color:#111;}
+#contact input::placeholder,#contact textarea::placeholder{color:#aaa;}
+#contact button{padding:10px;background:#ff4d4d;border:none;color:#0a0a0a;border-radius:5px;cursor:pointer;transition:0.3s;}
+#contact button:hover{background:#6200ee;color:#fff;}
+
+/* Footer */
+footer{text-align:center;padding:20px;color:#aaa;background:#111;}
+body.light footer{background:#fff;color:#111;}
+
+/* Social Icons */
+.social-icons{position:fixed;top:50%;left:10px;transform:translateY(-50%);display:flex;flex-direction:column;gap:15px;z-index:100;}
+.social-icons a{color:#ff4d4d;font-size:22px;transition:0.3s;}
+.social-icons a:hover{transform:translateX(5px);}
+
+/* Filter buttons */
+.filter-btns{text-align:center;margin-bottom:40px;}
+.filter-btns button{padding:8px 15px;margin:0 5px;border:none;border-radius:5px;background:#333;color:#fff;cursor:pointer;transition:0.3s;}
+.filter-btns button:hover,.filter-btns button.active{background:#ff4d4d;color:#fff;}
+
+/* Project Preview Modal */
+.project-preview{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(0);transition:0.3s;z-index:999;width:80%;max-width:600px;border:3px solid #ff4d4d;border-radius:10px;background:#111;}
+body.light .project-preview{background:#f0f0f0;border-color:#ff4d4d;}
+.project-preview img{width:100%;border-radius:10px;}
+.project-preview.show{transform:translate(-50%,-50%) scale(1);}
+.project-preview-close{position:absolute;top:10px;right:10px;color:#ff4d4d;font-size:20px;cursor:pointer;}
+</style>
+</head>
+<body>
+
+<header>
+<h1>Mohd Owais</h1>
+<nav>
+<a href="#hero">Home</a>
+<a href="#about">About</a>
+<a href="#projects">Projects</a>
+<a href="#skills">Skills</a>
+<a href="#experience">Experience</a>
+<a href="#contact">Contact</a>
+<i class="fas fa-lightbulb" id="themeToggle"></i>
+</nav>
+</header>
+
+<div class="social-icons">
+<a href="https://www.linkedin.com/in/mohd-owais-8702b4259" target="_blank"><i class="fab fa-linkedin"></i></a>
+<a href="https://mohdowais8.github.io/PortfolioSite/" target="_blank"><i class="fas fa-globe"></i></a>
+<a href="mailto:owaischaudhary002@gmail.com"><i class="fas fa-envelope"></i></a>
+</div>
+
+<section id="hero">
+<h1>Mohd Owais</h1>
+<p id="typing"></p>
+</section>
+
+<section id="about">
+<h2>About Me</h2>
+<p>Hello! I am Mohd Owais, a passionate developer skilled in AI, Machine Learning, Web Development, and Ethical Hacking. I build practical applications and explore modern tech for real-world solutions.</p>
+</section>
+
+<section id="projects">
+<h2>Projects</h2>
+<div class="filter-btns">
+<button class="active" data-filter="all">All</button>
+<button data-filter="web">Web</button>
+<button data-filter="ai">AI</button>
+<button data-filter="python">Python</button>
+</div>
+<div class="projects">
+<div class="project-card" data-preview="https://mohdowais8.github.io/carsite/" data-type="web">
+<h3>Ecommerce Website</h3>
+<p>A fully responsive online car booking and sales platform built with HTML, CSS, and JS.</p>
+<div class="tech-badges"><span>HTML</span><span>CSS</span><span>JS</span></div>
+</div>
+
+<div class="project-card" data-preview="https://via.placeholder.com/600x400.png?text=Face+Detection+App" data-type="python">
+<h3>Face Detection App</h3>
+<p>A Python application using OpenCV for real-time face detection with live camera input.</p>
+<div class="tech-badges"><span>Python</span><span>OpenCV</span></div>
+</div>
+
+<div class="project-card" data-preview="https://via.placeholder.com/600x400.png?text=OVA" data-type="web">
+<h3>OVA</h3>
+<p>A modern, interactive project showcasing web-based tools and automation scripts, designed for real-world application and learning experience.</p>
+<div class="tech-badges"><span>Python</span><span>JavaScript</span><span>HTML</span><span>CSS</span></div>
+</div>
+</div>
+</section>
+
+<section id="skills">
+<h2>Skills</h2>
+<div class="skills">
+<div class="skill">
+<svg viewBox="0 0 120 120">
+<circle cx="60" cy="60" r="54" stroke="#333" stroke-width="12" fill="none"></circle>
+<circle class="skill-fg" cx="60" cy="60" r="54" stroke="#ff4d4d" stroke-width="12" fill="none" stroke-dasharray="339.292" stroke-dashoffset="339.292"></circle>
+</svg>
+<div class="skill-text">Python 90%</div>
+</div>
+<div class="skill">
+<svg viewBox="0 0 120 120">
+<circle cx="60" cy="60" r="54" stroke="#333" stroke-width="12" fill="none"></circle>
+<circle class="skill-fg" cx="60" cy="60" r="54" stroke="#ff4d4d" stroke-width="12" fill="none" stroke-dasharray="339.292" stroke-dashoffset="339.292"></circle>
+</svg>
+<div class="skill-text">JavaScript 85%</div>
+</div>
+<div class="skill">
+<svg viewBox="0 0 120 120">
+<circle cx="60" cy="60" r="54" stroke="#333" stroke-width="12" fill="none"></circle>
+<circle class="skill-fg" cx="60" cy="60" r="54" stroke="#ff4d4d" stroke-width="12" fill="none" stroke-dasharray="339.292" stroke-dashoffset="339.292"></circle>
+</svg>
+<div class="skill-text">React 80%</div>
+</div>
+</div>
+</section>
+
+<section id="experience">
+<h2>Experience</h2>
+<div class="timeline">
+<div class="job">
+<h4>Freelancer</h4>
+<span>4 Months</span>
+<p>Worked on web development and AI/ML projects, gaining experience in client interaction, project planning, and delivering functional solutions.</p>
+</div>
+</div>
+</section>
+
+<section id="contact">
+<h2>Contact Me</h2>
+<form>
+<input type="text" placeholder="Your Name" required>
+<input type="email" placeholder="Your Email" required>
+<textarea rows="5" placeholder="Your Message" required></textarea>
+<button type="submit">Send Message</button>
+</form>
+</section>
+
+<footer>
+&copy; 2025 Mohd Owais | All Rights Reserved
+</footer>
+
+<div class="project-preview" id="previewModal">
+<span class="project-preview-close" id="closePreview"><i class="fas fa-times"></i></span>
+<img src="" alt="Project Preview" id="previewImage">
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script>
+// Particles.js for Hero
+particlesJS("hero",{ "particles":{ "number":{"value":60,"density":{"enable":true,"value_area":900}}, "color":{"value":"#ff4d4d"}, "shape":{"type":"circle"}, "opacity":{"value":0.6}, "size":{"value":3}, "line_linked":{"enable":true,"distance":120,"color":"#ff4d4d","opacity":0.5,"width":1}, "move":{"enable":true,"speed":2} } });
+
+// Typing effect
+const typingEl = document.getElementById("typing");
+const texts = ["AI & ML Developer","Ethical Hacking Learner","Full-Stack Developer","Tech Enthusiast"];
+let idx=0,charIdx=0,isDel=false,current="";
+function typeAnim(){ if(idx>=texts.length) idx=0; const full=texts[idx]; if(isDel){current=full.substring(0,charIdx--);} else{current=full.substring(0,charIdx++);} typingEl.textContent=current; if(!isDel && charIdx===full.length){isDel=true;setTimeout(typeAnim,1000);} else if(isDel && charIdx===0){isDel=false;idx++;setTimeout(typeAnim,500);} else{setTimeout(typeAnim,100);} }
+typeAnim();
+
+// Scroll reveal animations
+window.addEventListener('scroll',()=>{
+  const trigger=window.innerHeight/5*4;
+  document.querySelectorAll('section').forEach(sec=>{ if(sec.getBoundingClientRect().top<trigger){sec.classList.add('show');} });
+  document.querySelectorAll('.job').forEach(job=>{ if(job.getBoundingClientRect().top<trigger){job.classList.add('show');} });
+  document.querySelectorAll('.skill-fg').forEach(skill=>{ if(skill.getBoundingClientRect().top<trigger){ const percent=parseInt(skill.parentElement.querySelector('.skill-text').innerText.match(/\d+/)); skill.style.strokeDashoffset=339.292-(339.292*percent/100); } });
+});
+
+// Project modal
+const previewModal=document.getElementById("previewModal");
+const previewImage=document.getElementById("previewImage");
+const closePreview=document.getElementById("closePreview");
+document.querySelectorAll('.project-card').forEach(card=>{ card.addEventListener('click',()=>{ const imgSrc=card.getAttribute('data-preview'); previewImage.src=imgSrc; previewModal.classList.add('show'); }); });
+closePreview.addEventListener('click',()=>{previewModal.classList.remove('show');});
+
+// Filter projects
+document.querySelectorAll('.filter-btns button').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.filter-btns button').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter=btn.getAttribute('data-filter');
+    document.querySelectorAll('.project-card').forEach(p=>{
+      if(filter==='all'||p.getAttribute('data-type')===filter){p.style.display='block';}
+      else{p.style.display='none';}
+    });
+  });
+});
+
+// Theme toggle
+document.getElementById('themeToggle').addEventListener('click',()=>{document.body.classList.toggle('light');});
+</script>
+</body>
+</html>
